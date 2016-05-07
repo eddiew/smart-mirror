@@ -32,7 +32,7 @@
     <script src="js/services/geolocation.js"></script>
     <script src="js/services/calendar.js"></script>
     <script src="js/services/traffic.js"></script>
-    <script src="js/services/fitbit.js"></script>
+    <!-- <script src="js/services/fitbit.js"></script> -->
     <script src="js/services/reminder.js"></script>
     <script src="js/controller.js"></script>
 
@@ -133,20 +133,20 @@
           <dl>
             <dt ng-repeat-start="command in commands">{{command['text']}}</dt>
             <dd ng-repeat-end>{{command['description']}}</dd>
-            <dt ng-show="fitbitEnabled">Show my walking</dt>
-            <dd ng-show="fitbitEnabled">Refreshes fitbit data.</dd>
+<!--             <dt ng-show="fitbitEnabled">Show my walking</dt>
+            <dd ng-show="fitbitEnabled">Refreshes fitbit data.</dd> -->
           </dl>
-          <small>
+<!--           <small>
             We are using node <script>document.write(process.versions.node)</script>,
             Chrome <script>document.write(process.versions.chrome)</script>,
             and Electron <script>document.write(process.versions.electron)</script>.
-          </small>
+          </small> -->
         </div>
 
         <div class="error" ng-bind="speechError" ng-show="speechError"></div>
         <div class="interim-result" ng-bind="interimResult" ng-hide="speechError"></div>
       </div>
-      <div class="bottom-left" ng-show="fitbitEnabled">
+<!--       <div class="bottom-left" ng-show="fitbitEnabled">
         <div>
           <div><span class="fitbit-title">Fitbit stats for {{fbDailyAverage.fullName}}</span></div>
           <div><span class="fitbit-item">Your daily average steps: {{fbDailyAverage.averageDailySteps}}</span></div>
@@ -163,7 +163,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
       <div class="colors animate-grow" ng-show="focus == 'colors'">
         <div class="color-block" ng-repeat="color in colors" style="background-color:{{color}}"></div>
       </div>
