@@ -96,7 +96,6 @@
     </div>
     <div class="container">
       <div class="middle-center">
-        <h1>{{greeting}}</h1>
         <h3 ng-show="!(user.name === undefined)">{{user.name}}</h3>
         <!-- <div class="listening" ng-show="listening">Ready: {{focus}}</div> -->
         <div class="contents-box map animate-grow" ng-show="focus == 'map'">
@@ -128,6 +127,7 @@
         </div>
       </div>
       <div class="bottom-center">
+        <h1 id="greeting">{{greeting}}</h1>
         <!-- Command list -->
         <div class="commands animate-grow" ng-show="focus == 'commands'">
           <h2>{{ 'commands.title' | translate }}</h2>
