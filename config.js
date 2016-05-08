@@ -1,5 +1,7 @@
-var config = {
+var config = Cookies.getJSON('config');
 
+if (config === undefined) {
+  config = {
     // Lenguage for the mirror
     language : "en", //must also manually update locales/X.js bower component in index.html
     layout: "main",
@@ -7,32 +9,32 @@ var config = {
 
     // Alternativly you can have greetings that appear based on the time of day
     greeting : {
-       night: ["Bed?", "zzZZzz", "Go to sleep you idiot"],
-       morning: ["Good Morning"],
-       midday: ["Hey!", "Hello"],
-       evening: ["Good evening"]
+      night: ["Bed?", "zzZZzz", "Go to sleep you idiot"],
+      morning: ["Good Morning"],
+      midday: ["Hey!", "Hello"],
+      evening: ["Good evening"]
     },
 
     // forcast.io
     forcast : {
-        key : "", // Your forcast.io api key
-        units : "auto" // See forcast.io documentation if you are getting the wrong units
+      key : "", // Your forcast.io api key
+      units : "auto" // See forcast.io documentation if you are getting the wrong units
     },
 
     // Philips Hue
     hue : {
-        ip : "", // The IP address of your hue base
-        uername : "", // The username used to control your hue
-        groups : [{
-            id : 0, // The group id 0 will change all the lights on the network
-            name : "all"
-        }, {
-            id : 1,
-            name : "bedroom"
-        }, {
-            id : 2,
-            name : "kitchen"
-        }]
+      ip : "", // The IP address of your hue base
+      uername : "", // The username used to control your hue
+      groups : [{
+        id : 0, // The group id 0 will change all the lights on the network
+        name : "all"
+      }, {
+        id : 1,
+        name : "bedroom"
+      }, {
+        id : 2,
+        name : "kitchen"
+      }]
     },
 
     // Calendar (An array of iCals)
@@ -44,7 +46,7 @@ var config = {
 
     // Giphy
     giphy: {
-      key : "" // Your Gliphy API key
+      key : "" // Your Giphy API key
     },
     
     traffic: {
@@ -60,4 +62,19 @@ var config = {
         endTime: ""*/ // Optional starttime and endtime when the traffic information should be displayed on screen. The format can be either hh:mm or hh:mm am/pm
       }]
     }
-};
+  };
+  Cookies.set('config', config);
+}
+
+var changed = false;
+
+if (!config.forcast.key) {
+  var key = window.prompt("forcast.io API key");
+  if (key) {
+    config.forcast.key = key;
+    changed = true;
+  }
+}
+
+if (changed)
+  Cookies.set('config', config);
